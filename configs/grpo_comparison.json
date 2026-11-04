@@ -22,7 +22,6 @@
     "src/env_smoke.py": "04b42b62da8125d72fffd4d450f69d8721bcf89875a5f60882bff3b1a3838579",
     "docs/EVALUATION.md": "4c6993d6e90d8d7de705d369d2a40f51481867ed8b2c6b5454355decbb348fda"
   },
-  "evaluation_class_methods_ast_sha256": "94c5303d67c8cc7615f69415dd38cdc2262c4cd6230fc10d9c93a9ecfe793b06",
   "reference_experiment": {
     "algorithm.adv_estimator": "grpo",
     "data.train_batch_size": 128,
@@ -84,5 +83,6 @@
     "algorithm.sdar.skill_all": false,
     "trainer.project_name": "grpo_opsd_searchqa",
     "trainer.experiment_name": "grpo_opsd_searchqa"
-  }
+  },
+  "evaluation_class_methods_source_sha256": "5852a7e69caedd35d9aa6330f2ea7fb8f263f71fd43201d46cd6f31afb791108"
 }

@@ -56,7 +56,7 @@ reward、prompt、parser、检索与六份静态 skill 文件均进行 SHA 校�
 
 `configs/grpo_comparison.json` 记录两个公开 GRPO 版本、共同文件 SHA、
 完整 GRPO 实验配置以及允许的具名方法差异；CPU 测试逐项比对。
-两个 SearchTrainer 的方法 AST 完全相同，仅继承类由 RayPPO 换为 SkillSD。
+两个 SearchTrainer 的方法源代码完全相同，仅继承类由 RayPPO 换为 SkillSD。
 这保证评测适配没有趁换方法时悄悄更换题目、归一化、聚合或调度。
 
 原始169,615/51,713 train/test 数据中已报告10个规范化题目文本完全匹配，

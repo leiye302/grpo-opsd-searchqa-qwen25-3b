@@ -20,12 +20,15 @@ def test_shared_files_match_both_public_grpo_references_byte_for_byte():
         assert sha(ROOT / name) == expected, name
 
 
-def test_evaluation_methods_are_exact_same_ast_as_published_grpo():
-    tree = ast.parse((ROOT / 'src/grpo_eval.py').read_text(encoding='utf-8'))
+def test_evaluation_methods_are_exact_same_source_as_published_grpo():
+    source = (ROOT / 'src/grpo_eval.py').read_text(encoding='utf-8')
+    tree = ast.parse(source)
     cls = next(n for n in tree.body if isinstance(n, ast.ClassDef) and n.name == 'SearchTrainer')
-    bodies = [ast.dump(n, include_attributes=False) for n in cls.body]
+    # Python3.12 adds FunctionDef.type_params; hash original method source
+    # instead of a Python-version-specific AST dump. No assertion is weakened.
+    bodies = [ast.get_source_segment(source, n) for n in cls.body]
     identity = hashlib.sha256('\n'.join(bodies).encode()).hexdigest()
-    assert identity == load('grpo_comparison.json')['evaluation_class_methods_ast_sha256']
+    assert identity == load('grpo_comparison.json')['evaluation_class_methods_source_sha256']
     assert ast.unparse(cls.bases[-1]) == 'SkillSDRayTrainer'
 
 
